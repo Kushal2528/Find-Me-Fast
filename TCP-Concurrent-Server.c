@@ -19,7 +19,6 @@ char buff[MAX];
 float clitime[20];
 int ne=0;
 int arr[20],i,num,max,min,po=0,n,ans[10];
-
 //Random Array Generation
     srand(time (NULL));
     for(i=0; i<20; i++)
@@ -58,7 +57,7 @@ if(ans[0]==ne && ans[1]==max && ans[2]==min&& ans[3]==po)
 write(sockfd,"Congrats! All answers are correct!",34);
 else
 write(sockfd,"Uh-oh! Better luck next time!",30);
-exit(0);
+exit(0); //Child exits
 }
 
 int main(int argc, char *argv[])
@@ -108,14 +107,7 @@ childpid=fork();
 if((childpid==0))
 {
 close(sockfd);
-while(1)
-{
 func(connfd);
 }
 }
 }
-close(connfd);
-}
-
-
-
